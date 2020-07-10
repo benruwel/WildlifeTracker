@@ -6,12 +6,13 @@ public class EndangeredAnimal extends Animal {
 
     private String health;
     private String age;
+    public static final boolean DATABASE_ENDANGERED = true;
 
     public EndangeredAnimal(String name, String health, String age) {
         this.name = name;
         this.health = health;
         this.age = age;
-        this.endangered = true;
+        endangered = DATABASE_ENDANGERED;
     }
 
     public String getHealth() {
@@ -23,9 +24,11 @@ public class EndangeredAnimal extends Animal {
     }
 
     public static List<EndangeredAnimal> all() {
-        String sql = "SELECT * FROM animals;";
+        String sql = "SELECT * FROM animals WHERE endangered = true;";
         try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(EndangeredAnimal.class);
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(EndangeredAnimal.class);
         }
     }
 
@@ -34,6 +37,7 @@ public class EndangeredAnimal extends Animal {
             String sql = "SELECT * FROM animals where id = :id";
             EndangeredAnimal endangeredAnimal = con.createQuery(sql)
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeAndFetchFirst(EndangeredAnimal.class);
             return endangeredAnimal;
         }

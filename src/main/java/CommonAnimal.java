@@ -4,17 +4,20 @@ import java.util.List;
 
 public class CommonAnimal extends Animal {
 
+    public static final boolean DATABASE_ENDANGERED = false;
 
     public CommonAnimal(String name) {
         this.name = name;
-        this.endangered = false;
+        endangered = DATABASE_ENDANGERED;
     }
 
 
     public static List<CommonAnimal> all() {
-        String sql = "SELECT * FROM animals;";
+        String sql = "SELECT * FROM animals WHERE endangered = false;";
         try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(CommonAnimal.class);
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(CommonAnimal.class);
         }
     }
 
@@ -23,6 +26,7 @@ public class CommonAnimal extends Animal {
             String sql = "SELECT * FROM animals where id = :id";
             CommonAnimal commonAnimal = con.createQuery(sql)
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeAndFetchFirst(CommonAnimal.class);
             return commonAnimal;
         }

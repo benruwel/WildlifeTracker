@@ -22,9 +22,10 @@ public abstract class Animal {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name) VALUES (:name);";
+            String sql = "INSERT INTO animals (name, endangered) VALUES (:name, :endangered);";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
+                    .addParameter("endangered", this.endangered)
                     .executeUpdate()
                     .getKey();
         }

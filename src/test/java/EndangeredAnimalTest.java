@@ -21,6 +21,14 @@ public class EndangeredAnimalTest {
         assertEquals("Elephant", setupObject().getName());
     }
     @Test
+    public void getHealth_endangeredAnimalInstantiatesWithHealth_okay() {
+        assertEquals("okay", setupObject().getHealth());
+    }
+    @Test
+    public void getAge_endangeredAnimalInstantiatesWithAge_newborn() {
+        assertEquals("newborn", setupObject().getAge());
+    }
+    @Test
     public void equals_returnsTrueIfNameIsSame_true() {
         Animal firstEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
         Animal anotherEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
