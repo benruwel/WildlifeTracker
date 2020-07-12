@@ -1,0 +1,91 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #F2E8CF;
+  background-size: cover;
+  font-family: 'Montserrat', sans-serif;
+  color: #F2E8CF;
+  position: relative;
+}
+
+.template-content{
+    margin-top: 80px;
+}
+
+.watermark {
+  color: #c7bda56c;
+  position: absolute;
+  text-align: left;
+  font-size: 80px;
+}
+
+.app-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.app-logo .title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.wildlife-nav {
+  background-color: #386641;
+}
+
+.wildlife-nav .nav-link {
+  color: #F2E8CF;
+}
+
+.title {
+  color: black;
+}
+
+.title:hover, .nav-link:hover {
+  color: #6A994E;
+}
+
+.card, .list-group-item {
+  background: none;
+}
+
+.list-group-item {
+  text-align: center;
+}
+
+.hero, .card-header, .card-footer {
+  background-color: #386641;
+}
+
+.card-header, .card-footer {
+  color: #F2E8CF;
+}
+
+.card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.card-body {
+  background-color: #6A994E;
+}
+
+/*# sourceMappingURL=app.css.map */

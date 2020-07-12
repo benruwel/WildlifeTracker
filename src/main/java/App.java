@@ -19,5 +19,51 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+
+            String inputtedUsername = request.queryParams("username");
+            request.session().attribute("username", inputtedUsername);
+            model.put("username", inputtedUsername);
+            response.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        get("/sightings", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "sightings.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/sightings/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "sighting-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/sightings/common/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            String location = request.queryParams("location");
+            String rangerName = request.queryParams("rangerName");
+            CommonAnimal newCommonAnimal = new CommonAnimal(name);
+            newCommonAnimal.save();
+            int animalId = newCommonAnimal.getId();
+            Sighting newSighting = new Sighting(animalId, location, rangerName);
+            newSighting.save();
+            response.redirect("/sightings");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+        post("/sightings/endangered/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            String health = request.queryParams("health");
+            String age = request.queryParams("age");
+            String location = request.queryParams("location");
+            String rangerName = request.queryParams("rangerName");
+            response.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
+
     }
 }
