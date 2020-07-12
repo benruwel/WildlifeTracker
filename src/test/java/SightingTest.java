@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 
 public class SightingTest {
 
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
     public Sighting setupObject() {
         return new Sighting(1, "Pembeni", "Douglas Onzima");
     }
-    @Rule
-    public DatabaseRule database = new DatabaseRule();
 
     @Test
     public void sighting_instantiatesCorrectly_true() {
@@ -59,7 +59,7 @@ public class SightingTest {
     public void find_returnsSightingWithSameId_secondSighting() {
         Sighting firstSighting = new Sighting(1, "pembeni", "Ben");
         firstSighting.save();
-        Sighting secondSighting = new Sighting(56, "Daraja", "Ruwel");
+        Sighting secondSighting = new Sighting(2, "Daraja", "Ruwel");
         secondSighting.save();
         assertEquals(Sighting.find(secondSighting.getSightingId()), secondSighting);
     }
