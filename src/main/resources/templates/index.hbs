@@ -1,4 +1,6 @@
-{{#partial }}
+{{#partial "content"}}
+
+    {{#if username }}
 
     <div class="jumbotron bg-none hero">
         <div class="container">
@@ -22,6 +24,28 @@
         <a href="/squads/new" class="btn btn-dark">New Sighting</a>
         <a href="heroes/new" class="btn btn-dark">View Sightings</a>
     </div>
-{{/partial}}
+
+    {{else }}
+        <div class="card" style="max-width: 480px">
+            <div class="card-header">
+                <p class="card-header-title">
+                    Login
+                </p>
+            </div>
+            <div class="card-body">
+                <form class="form-inline">
+
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="username" class="sr-only">Username</label>
+                        <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary mx-sm-3 mb-2">Start Protecting</button>
+                </form>
+
+            </div>
+
+        </div>
+    {{/if }}
+{{/partial }}
 
 {{> layout.hbs}}
