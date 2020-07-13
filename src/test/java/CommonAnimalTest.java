@@ -28,31 +28,31 @@ public class CommonAnimalTest {
     }
     @Test
     public void save_insertsObjectIntoDatabase_CommonAnimal() {
-        setupObject().save();
+        setupObject().saveCommonAnimal();
         assertTrue(CommonAnimal.all().get(0).equals(setupObject()));
     }
     @Test
     public void all_returnsAllInstancesOfCommonAnimal_true() {
         CommonAnimal firstCommonAnimal = new CommonAnimal("Elephant");
-        firstCommonAnimal.save();
+        firstCommonAnimal.saveCommonAnimal();
         CommonAnimal secondCommonAnimal = new CommonAnimal("Elephant");
-        secondCommonAnimal.save();
+        secondCommonAnimal.saveCommonAnimal();
         assertEquals(true, CommonAnimal.all().get(0).equals(firstCommonAnimal));
         assertEquals(true, CommonAnimal.all().get(1).equals(secondCommonAnimal));
     }
     @Test
     public void save_assignsIdToObject() {
         CommonAnimal testCommonAnimal = new CommonAnimal("Elephant");
-        testCommonAnimal.save();
+        testCommonAnimal.saveCommonAnimal();
         CommonAnimal savedCommonAnimal = CommonAnimal.all().get(0);
         assertEquals(testCommonAnimal.getId(), savedCommonAnimal.getId());
     }
     @Test
     public void find_returnsCommonWithSameId_secondCommonAnimal() {
         CommonAnimal firstCommonAnimal = new CommonAnimal("Elephant");
-        firstCommonAnimal.save();
+        firstCommonAnimal.saveCommonAnimal();
         CommonAnimal secondCommonAnimal = new CommonAnimal("Elephant");
-        secondCommonAnimal.save();
+        secondCommonAnimal.saveCommonAnimal();
         assertEquals(CommonAnimal.find(secondCommonAnimal.getId()), secondCommonAnimal);
     }
 

@@ -12,6 +12,18 @@ public class CommonAnimal extends Animal {
     }
 
 
+    public void saveCommonAnimal() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, endangered) VALUES (:name, :endangered);";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("endangered", this.endangered)
+                    .executeUpdate()
+                    .getKey();
+
+        }
+    }
+
     public static List<CommonAnimal> all() {
         String sql = "SELECT * FROM animals WHERE endangered = false;";
         try(Connection con = DB.sql2o.open()) {

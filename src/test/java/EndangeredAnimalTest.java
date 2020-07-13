@@ -36,31 +36,31 @@ public class EndangeredAnimalTest {
     }
     @Test
     public void save_insertsObjectIntoDatabase_EndangeredAnimal() {
-        setupObject().save();
+        setupObject().saveEndangeredAnimal();
         assertTrue(EndangeredAnimal.all().get(0).equals(setupObject()));
     }
     @Test
     public void all_returnsAllInstancesOfEndangeredAnimal_true() {
-        Animal firstEndangerdAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
-        firstEndangerdAnimal.save();
-        Animal secondEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
-        secondEndangeredAnimal.save();
+        EndangeredAnimal firstEndangerdAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
+        firstEndangerdAnimal.saveEndangeredAnimal();
+        EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
+        secondEndangeredAnimal.saveEndangeredAnimal();
         assertEquals(true, EndangeredAnimal.all().get(0).equals(firstEndangerdAnimal));
         assertEquals(true, EndangeredAnimal.all().get(1).equals(secondEndangeredAnimal));
     }
     @Test
     public void save_assignsIdToObject() {
-        Animal testEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
-        testEndangeredAnimal.save();
-        Animal savedEndangeredAnimal = EndangeredAnimal.all().get(0);
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
+        testEndangeredAnimal.saveEndangeredAnimal();
+        EndangeredAnimal savedEndangeredAnimal = EndangeredAnimal.all().get(0);
         assertEquals(testEndangeredAnimal.getId(), savedEndangeredAnimal.getId());
     }
     @Test
     public void find_returnsEndangeredAnimalWithSameId_secondEndangeredAnimal() {
-        Animal firstEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
-        firstEndangeredAnimal.save();
-        Animal secondEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
-        secondEndangeredAnimal.save();
+        EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
+        firstEndangeredAnimal.saveEndangeredAnimal();
+        EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Elephant", "okay", "newborn");
+        secondEndangeredAnimal.saveEndangeredAnimal();
         assertEquals(EndangeredAnimal.find(secondEndangeredAnimal.getId()), secondEndangeredAnimal);
     }
 

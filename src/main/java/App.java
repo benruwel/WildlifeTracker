@@ -45,7 +45,7 @@ public class App {
             String location = request.queryParams("location");
             String rangerName = request.queryParams("rangerName");
             CommonAnimal newCommonAnimal = new CommonAnimal(name);
-            newCommonAnimal.save();
+            newCommonAnimal.saveCommonAnimal();
             int animalId = newCommonAnimal.getId();
             Sighting newSighting = new Sighting(animalId, location, rangerName);
             newSighting.save();
@@ -60,7 +60,12 @@ public class App {
             String age = request.queryParams("age");
             String location = request.queryParams("location");
             String rangerName = request.queryParams("rangerName");
-            response.redirect("/");
+            EndangeredAnimal newEndangeredAnimal = new EndangeredAnimal(name, health, age);
+            newEndangeredAnimal.saveEndangeredAnimal();
+            int animalId  = newEndangeredAnimal.getId();
+            Sighting newSighting = new Sighting(animalId, location, rangerName);
+            newSighting.save();
+            response.redirect("/sightings");
             return null;
         }, new HandlebarsTemplateEngine());
 

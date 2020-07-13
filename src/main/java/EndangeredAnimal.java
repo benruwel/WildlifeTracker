@@ -4,7 +4,7 @@ import java.util.List;
 
 public class EndangeredAnimal extends Animal {
 
-    private String health;
+    private  String health;
     private String age;
     public static final boolean DATABASE_ENDANGERED = true;
 
@@ -16,11 +16,26 @@ public class EndangeredAnimal extends Animal {
     }
 
     public String getHealth() {
-        return health;
+        return this.health;
     }
 
     public String getAge() {
         return age;
+    }
+
+
+    public void saveEndangeredAnimal() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, endangered, health, age) VALUES (:name, :endangered, :health, :age);";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("endangered", this.endangered)
+                    .addParameter("health", this.health)
+                    .addParameter("age", this.age)
+                    .executeUpdate()
+                    .getKey();
+
+        }
     }
 
     public static List<EndangeredAnimal> all() {

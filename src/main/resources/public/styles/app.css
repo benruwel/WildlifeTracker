@@ -5,22 +5,22 @@ html, body {
 }
 
 body {
-  background-color: #F2E8CF;
+  background-color: #DEE2E6;
   background-size: cover;
   font-family: 'Montserrat', sans-serif;
   color: #F2E8CF;
   position: relative;
 }
 
-.template-content{
-    margin-top: 80px;
-}
-
 .watermark {
-  color: #c7bda56c;
+  color: #343a401f;
   position: absolute;
   text-align: left;
   font-size: 80px;
+}
+
+.template-content{
+    margin-top: 70px;
 }
 
 .app-logo {
@@ -41,19 +41,19 @@ body {
 }
 
 .wildlife-nav {
-  background-color: #386641;
+  background-color: #343A40;
 }
 
 .wildlife-nav .nav-link {
-  color: #F2E8CF;
-}
-
-.title {
   color: black;
 }
 
+.title {
+  color: #6C757D;
+}
+
 .title:hover, .nav-link:hover {
-  color: #6A994E;
+  color: #F2E8CF;
 }
 
 .card, .list-group-item {
@@ -65,7 +65,7 @@ body {
 }
 
 .hero, .card-header, .card-footer {
-  background-color: #386641;
+  background-color: #343A40;
 }
 
 .card-header, .card-footer {
@@ -85,7 +85,8 @@ body {
 }
 
 .card-body {
-  background-color: #6A994E;
+  background-color: #ADB5BD;
+  color: black;
+  font-weight: bold;
 }
-
 /*# sourceMappingURL=app.css.map */
