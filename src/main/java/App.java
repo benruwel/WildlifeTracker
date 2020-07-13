@@ -31,6 +31,12 @@ public class App {
 
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Sighting> allSightings = Sighting.all();
+            List<CommonAnimal> allCommonAnimals = CommonAnimal.all();
+            List<EndangeredAnimal> allEndangeredAnimals = EndangeredAnimal.all();
+            model.put("allSightings", allSightings);
+            model.put("allCommonAnimals", allCommonAnimals);
+            model.put("allEndangeredAnimals", allEndangeredAnimals);
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
 

@@ -1,5 +1,6 @@
 import org.sql2o.Connection;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -61,18 +62,27 @@ public class Sighting {
         }
     }
 
+//    public List<Object> allAnimalSightings () {
+//        try(Connection con = DB.sql2o.open()){
+//            String joinQuery = "SELECT * FROM animals WHERE id = :animal_id";
+//            List<Object> allAnimalsList = con.createQuery(joinQuery)
+//                    .addParameter("person_id", this.animal_id)
+//                    .executeAndFetch(Object.class);
+//            return allAnimalsList;
+//        }
+//    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sighting sighting = (Sighting) o;
-        return animal_id == sighting.animal_id
-                && (location.equals(sighting.location));
+        return Objects.equals(ranger_name, sighting.ranger_name);
     }
 
     @Override
     public int hashCode() {
-        return location.hashCode();
+        return Objects.hash(ranger_name);
     }
 }
