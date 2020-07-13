@@ -49,3 +49,6 @@ settings.gradle
 ############
 .idea
 .idea/
+
+# Heroku and Maven #
+target
