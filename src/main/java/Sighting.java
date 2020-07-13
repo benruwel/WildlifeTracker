@@ -30,7 +30,7 @@ public class Sighting {
     }
 
     public int getSightingId() {
-        return sighting_id;
+        return this.sighting_id;
     }
 
     public void save() {
@@ -45,7 +45,7 @@ public class Sighting {
         }
     }
     public static List<Sighting> all() {
-        String sql = "SELECT * FROM sightings";
+        String sql = "SELECT * FROM sightings;";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .executeAndFetch(Sighting.class);
@@ -61,16 +61,6 @@ public class Sighting {
             return sighting;
         }
     }
-
-//    public List<Object> allAnimalSightings () {
-//        try(Connection con = DB.sql2o.open()){
-//            String joinQuery = "SELECT * FROM animals WHERE id = :animal_id";
-//            List<Object> allAnimalsList = con.createQuery(joinQuery)
-//                    .addParameter("person_id", this.animal_id)
-//                    .executeAndFetch(Object.class);
-//            return allAnimalsList;
-//        }
-//    }
 
 
     @Override

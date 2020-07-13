@@ -31,12 +31,10 @@ public class App {
 
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Sighting> allSightings = Sighting.all();
-            List<CommonAnimal> allCommonAnimals = CommonAnimal.all();
             List<EndangeredAnimal> allEndangeredAnimals = EndangeredAnimal.all();
-            model.put("allSightings", allSightings);
-            model.put("allCommonAnimals", allCommonAnimals);
+            List<CommonAnimal> allCommonAnimals = CommonAnimal.all();
             model.put("allEndangeredAnimals", allEndangeredAnimals);
+            model.put("allCommonAnimals", allCommonAnimals);
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -75,6 +73,12 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        get("/sighting/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Sighting thisSighting = Sighting.find(Integer.parseInt(request.params("id")));
+            model.put("thisSighting", thisSighting);
+            return new ModelAndView(model, "sighting-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 }

@@ -8,64 +8,71 @@
         </div>
     </div>
 
-    {{#if allSightings}}
-        {{#each allSightings}}
-            <div class="card sightings-card" style="max-width: 550px;">
-                <div class="card-header">
-                    <p class="card-text">Animal name: {{ animalId }}</p>
-                </div>
+    <hr>
 
-                <div class="card-footer">
-                    <p class="card-text">Location: {{ location }}</p>
-                    <p class="card-text">Ranger Name: {{ rangerName }}</p>
-                </div>
-            </div>
-        {{/each }}
-        {{else }}
+    {{#if allEndangeredAnimals}}
         <div class="card" style="min-width: 550px; margin-bottom: 20px">
             <div class="card-body">
                 <p class="card-text">
-                    No sightings of endangered animals this week
+                    Endangered Animal Sightings
                 </p>
             </div>
         </div>
-    {{/if }}
-
-    {{#if allEndangeredAnimals}}
         {{#each allEndangeredAnimals}}
-            <div class="card sightings-card" style="max-width: 550px;">
+            <div class="card sightings-card" style="max-width: 550px; margin-bottom: 20px">
                 <div class="card-header">
                     <p class="card-text">{{ name }}</p>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Endangered:{{ endangered }}</li>
+                        <li class="list-group-item">Age:{{ age }}</li>
                         <li class="list-group-item">Health: {{ health }}</li>
-                        <li class="list-group-item">Age: {{ age }}</li>
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <p class="card-text">Location: {{ location }}</p>
-                    <p class="card-text">Ranger Name: {{ rangerName }} </p>
+                    <a href="/sighting/{{ id }}" class="btn btn-light">Details</a>
                 </div>
             </div>
         {{/each }}
     {{else }}
+        <div class="card" style="min-width: 550px; margin-bottom: 20px">
+            <div class="card-body">
+                <p class="card-text">
+                    No sightings of endangered animals found
+                </p>
+            </div>
+        </div>
     {{/if }}
+
+    <hr>
     {{#if allCommonAnimals}}
+        <div class="card" style="min-width: 550px; margin-bottom: 20px">
+            <div class="card-body">
+                <p class="card-text">
+                    Common wildlife Sightings
+                </p>
+            </div>
+        </div>
         {{#each allCommonAnimals}}
-            <div class="card sightings-card" style="max-width: 550px;">
+            <div class="card sightings-card" style="max-width: 550px; margin-bottom: 20px">
                 <div class="card-header">
+                </div>
+                <div class="card-body">
                     <p class="card-text">{{ name }}</p>
                 </div>
-
                 <div class="card-footer">
-                    <p class="card-text">Location: {{ location }}</p>
-                    <p class="card-text">Ranger Name: {{ rangerName }} </p>
+                    <a href="/sighting/{{ id }}" class="btn btn-secondary">Details</a>
                 </div>
             </div>
         {{/each }}
     {{else }}
+        <div class="card" style="min-width: 550px; margin-bottom: 20px">
+            <div class="card-body">
+                <p class="card-text">
+                    No sightings of endangered animals found
+                </p>
+            </div>
+        </div>
     {{/if }}
 
 
