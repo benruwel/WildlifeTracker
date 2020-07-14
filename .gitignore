@@ -53,3 +53,6 @@ settings.gradle
 
 # Heroku and Maven #
 target
+
+#Database password
+src/main/java/DatabaseProps.java
