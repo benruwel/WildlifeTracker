@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-<img src="https://img.icons8.com/ios/100/000000/dog-footprint.png" width="150" height="150"/>  
+<img src="https://img.icons8.com/ios/300/000000/dog-footprint.png" width="150" height="150"/>  
 
   <h3 align="center">Wildlife Tracker</h3>
 
