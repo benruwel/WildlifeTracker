@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
+public abstract class DatabaseProps {
 
-public class DatabaseProps {
+    public static String username = "User";
+    public static String password = "7181";
+
 }
